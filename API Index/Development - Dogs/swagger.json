@@ -1,0 +1,219 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Dogs",
+    "contact": {
+      "name": "FlowStep"
+    },
+    "license": {
+      "name": "Private"
+    },
+    "version": "1.0.0.12"
+  },
+  "servers": [
+    {
+      "url": "http://api.flowstep.dev",
+      "variables": {
+        "basePath": {
+          "default": "/v1"
+        },
+        "protocol": {
+          "default": "http",
+          "enum": [
+            "http",
+            "https"
+          ]
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/dogs": {
+      "get": {
+        "tags": [
+          "Dogs"
+        ],
+        "summary": "Get dogs",
+        "operationId": "get-dogs",
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "title": "Limit",
+              "type": "integer",
+              "example": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "title": "Offset",
+              "type": "integer",
+              "example": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Payload",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/dog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dogs/{dogId}": {
+      "get": {
+        "tags": [
+          "Dogs"
+        ],
+        "summary": "Get dog by Id",
+        "operationId": "get-dog-by-id",
+        "parameters": [
+          {
+            "name": "dogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "title": "Dog Id",
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dog"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Dogs"
+        ],
+        "summary": "Update Dog",
+        "operationId": "update-dog",
+        "parameters": [
+          {
+            "name": "dogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "title": "Dog Id",
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/dog"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/dog"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "dog": {
+        "title": "Dog",
+        "type": "object",
+        "properties": {
+          "dogId": {
+            "title": "Dog Id",
+            "type": "integer",
+            "example": 1
+          },
+          "dogName": {
+            "title": "Dog Name",
+            "type": "string",
+            "example": "kiki",
+            "x-faker": "name.firstName"
+          },
+          "dogAddress": {
+            "$ref": "#/components/schemas/dogAddress"
+          },
+          "dogPhotos": {
+            "$ref": "#/components/schemas/dogPhotos"
+          }
+        }
+      },
+      "dogAddress": {
+        "title": "Dog Address",
+        "type": "object",
+        "properties": {
+          "dogAddressId": {
+            "title": "Dog Address Id",
+            "type": "integer",
+            "example": 1
+          },
+          "dogAddressName": {
+            "title": "Dog Address Name",
+            "type": "string",
+            "example": "ho chi minh"
+          }
+        }
+      },
+      "dogPhotos": {
+        "title": "Dog Photos",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/dogPhoto"
+        }
+      },
+      "dogPhoto": {
+        "title": "Dog Photo",
+        "type": "object",
+        "properties": {
+          "dogPhotoId": {
+            "title": "Dog Photo Id",
+            "type": "number",
+            "example": 1
+          },
+          "dogPhotoName": {
+            "title": "Dog Photo Name",
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "example": "aaaa",
+            "x-faker": "address.streetName"
+          }
+        }
+      }
+    }
+  }
+}
