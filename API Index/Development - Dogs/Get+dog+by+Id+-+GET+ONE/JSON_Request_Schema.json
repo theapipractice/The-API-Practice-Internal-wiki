@@ -1,0 +1,6 @@
+{
+  "title": "Request Payload",
+  "IsPayload": true,
+  "name": "requestPayload",
+  "type": "object"
+}
