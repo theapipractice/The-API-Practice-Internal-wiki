@@ -1,0 +1,66 @@
+{
+  "title": "Response Payload",
+  "type": "object",
+  "properties": {
+    "dog": {
+      "title": "Dog",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "dogId": {
+          "title": "Dog Id",
+          "type": "integer",
+          "additionalProperties": true
+        },
+        "dogName": {
+          "title": "Dog Name",
+          "type": "string",
+          "additionalProperties": true
+        },
+        "dogAddress": {
+          "title": "Dog Address",
+          "type": "object",
+          "additionalProperties": true,
+          "properties": {
+            "dogAddressId": {
+              "title": "Dog Address Id",
+              "type": "integer",
+              "additionalProperties": true
+            },
+            "dogAddressName": {
+              "title": "Dog Address Name",
+              "type": "string",
+              "additionalProperties": true
+            }
+          }
+        },
+        "dogPhotos": {
+          "title": "Dog Photos",
+          "type": "array",
+          "additionalProperties": true,
+          "items": {
+            "title": "Dog Photo",
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "dogPhotoId": {
+                "title": "Dog Photo Id",
+                "type": "number",
+                "additionalProperties": true,
+                "minimum": 1.0,
+                "maximum": 90.0
+              },
+              "dogPhotoName": {
+                "title": "Dog Photo Name",
+                "type": "string",
+                "additionalProperties": true,
+                "minLength": 1,
+                "maxLength": 50
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
