@@ -1,0 +1,439 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Dogs",
+    "contact": {
+      "name": "FlowStep"
+    },
+    "license": {
+      "name": "Private"
+    },
+    "version": "1.0.0.41",
+    "x-api-id": "08d90634-9baf-0dac-a337-c2fdcac5f959"
+  },
+  "servers": [
+    {
+      "url": "http://api.flowstep.dev",
+      "variables": {
+        "basePath": {
+          "default": "/v1"
+        },
+        "protocol": {
+          "default": "http",
+          "enum": [
+            "http"
+          ]
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/dogs": {
+      "get": {
+        "tags": [
+          "Dogs"
+        ],
+        "summary": "Get dogs",
+        "operationId": "get-dogs",
+        "parameters": [
+          {
+            "name": "api_key",
+            "in": "header",
+            "schema": {
+              "title": "api_key",
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "schema": {
+              "title": "Limit",
+              "type": "integer",
+              "example": 20
+            }
+          },
+          {
+            "name": "offset",
+            "in": "query",
+            "schema": {
+              "title": "Offset",
+              "type": "integer",
+              "example": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Payload",
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "title": "Total",
+                      "type": "integer",
+                      "example": 100
+                    },
+                    "items": {
+                      "$ref": "#/components/schemas/items"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Dogs"
+        ],
+        "summary": "create dog",
+        "operationId": "create-dog",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Request Payload",
+                "type": "object",
+                "properties": {
+                  "dog": {
+                    "$ref": "#/components/schemas/dog"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Payload",
+                  "type": "object",
+                  "properties": {
+                    "dog": {
+                      "$ref": "#/components/schemas/dog"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dogs/{dogId}": {
+      "get": {
+        "tags": [
+          "Dogs"
+        ],
+        "summary": "Get dog by Id",
+        "operationId": "get-dog-by-id",
+        "parameters": [
+          {
+            "name": "param-3",
+            "in": "query",
+            "schema": {
+              "title": "param 3",
+              "type": "string",
+              "example": "Sample"
+            }
+          },
+          {
+            "name": "para-1",
+            "in": "query",
+            "schema": {
+              "title": "para 1",
+              "type": "string",
+              "example": "aaa"
+            }
+          },
+          {
+            "name": "param-4",
+            "in": "query",
+            "schema": {
+              "title": "param 4",
+              "type": "string",
+              "example": "Sample"
+            }
+          },
+          {
+            "name": "param-7",
+            "in": "query",
+            "schema": {
+              "title": "param 7",
+              "type": "string",
+              "example": "Sample"
+            }
+          },
+          {
+            "name": "param-6",
+            "in": "query",
+            "schema": {
+              "title": "param 6",
+              "type": "string",
+              "example": "Sample"
+            }
+          },
+          {
+            "name": "param-5",
+            "in": "query",
+            "schema": {
+              "title": "param 5",
+              "type": "string",
+              "example": "Sample"
+            }
+          },
+          {
+            "name": "param-8",
+            "in": "query",
+            "schema": {
+              "title": "param 8",
+              "type": "string",
+              "example": "Sample"
+            }
+          },
+          {
+            "name": "dogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "title": "Dog Id",
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Payload",
+                  "type": "object",
+                  "properties": {
+                    "dog": {
+                      "$ref": "#/components/schemas/dog_v2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Dogs"
+        ],
+        "summary": "Update Dog",
+        "description": "<p>this</p>\n",
+        "operationId": "update-dog",
+        "parameters": [
+          {
+            "name": "dogId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "title": "Dog Id",
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "title": "Request Payload",
+                "type": "object",
+                "properties": {
+                  "dog": {
+                    "$ref": "#/components/schemas/dog_v2"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Payload",
+                  "type": "object",
+                  "properties": {
+                    "dog": {
+                      "$ref": "#/components/schemas/dog_v2"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dogs/children": {
+      "get": {
+        "tags": [
+          "Dogs"
+        ],
+        "summary": "get children",
+        "operationId": "get-children",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "title": "Response Payload",
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/dog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "items": {
+        "title": "Items",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/dog"
+        }
+      },
+      "dog": {
+        "title": "Dog",
+        "type": "object",
+        "properties": {
+          "dogId": {
+            "title": "Dog Id",
+            "type": "integer",
+            "example": 1
+          },
+          "dogName": {
+            "title": "Dog Name",
+            "type": "string",
+            "example": "kiki",
+            "x-faker": "name.firstName"
+          },
+          "dogAddress": {
+            "$ref": "#/components/schemas/dogAddress"
+          },
+          "dogPhotos": {
+            "$ref": "#/components/schemas/dogPhotos"
+          }
+        }
+      },
+      "dogAddress": {
+        "title": "Dog Address",
+        "type": "object",
+        "properties": {
+          "dogAddressId": {
+            "title": "Dog Address Id",
+            "type": "integer",
+            "example": 1
+          },
+          "dogAddressName": {
+            "title": "Dog Address Name",
+            "type": "string",
+            "example": "ho chi minh"
+          }
+        }
+      },
+      "dogPhotos": {
+        "title": "Dog Photos",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/dogPhoto"
+        }
+      },
+      "dogPhoto": {
+        "title": "Dog Photo",
+        "type": "object",
+        "properties": {
+          "dogPhotoId": {
+            "title": "Dog Photo Id",
+            "maximum": 90,
+            "minimum": 1,
+            "type": "number",
+            "example": 1
+          },
+          "dogPhotoName": {
+            "title": "Dog Photo Name",
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "example": "aaaa",
+            "x-faker": "address.streetName"
+          }
+        }
+      },
+      "dog_v2": {
+        "title": "Dog",
+        "type": "object",
+        "properties": {
+          "dogId": {
+            "title": "Dog Id",
+            "type": "integer",
+            "example": 1
+          },
+          "dogName": {
+            "title": "Dog Name",
+            "type": "string",
+            "example": "kiki",
+            "x-faker": "name.firstName"
+          },
+          "dogAddress": {
+            "$ref": "#/components/schemas/dogAddress"
+          },
+          "dogPhotos": {
+            "$ref": "#/components/schemas/dogPhotos_v1"
+          }
+        }
+      },
+      "dogPhotos_v1": {
+        "title": "Dog Photos",
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/dogPhoto_v2"
+        }
+      },
+      "dogPhoto_v2": {
+        "title": "Dog Photo",
+        "type": "object",
+        "properties": {
+          "dogPhotoId": {
+            "title": "Dog Photo Id",
+            "type": "number",
+            "example": 1
+          },
+          "dogPhotoName": {
+            "title": "Dog Photo Name",
+            "maxLength": 50,
+            "minLength": 1,
+            "type": "string",
+            "example": "aaaa",
+            "x-faker": "address.streetName"
+          }
+        }
+      }
+    }
+  }
+}
