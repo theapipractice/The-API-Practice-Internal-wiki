@@ -1,0 +1,19 @@
+{
+  "total": 100,
+  "items": [
+    {
+      "dogId": 1,
+      "dogName": "kiki",
+      "dogAddress": {
+        "dogAddressId": 1,
+        "dogAddressName": "ho chi minh"
+      },
+      "dogPhotos": [
+        {
+          "dogPhotoId": 1.0,
+          "dogPhotoName": "aaaa"
+        }
+      ]
+    }
+  ]
+}
